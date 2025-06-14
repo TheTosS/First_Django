@@ -1,13 +1,10 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
+from MainApp.models import Item
+from
+items = [...]
 
-items = [
-        {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
-        {"id": 2, "name": "Куртка кожаная", "quantity": 2},
-        {"id": 5, "name": "Coca-cola 1 литр", "quantity": 12},
-        {"id": 7, "name": "Картофель фри", "quantity": 0},
-        {"id": 8, "name": "Кепка", "quantity": 124},
 
-    ]
 
 
 # Create your views here.
@@ -29,12 +26,16 @@ def items_list(request):
     return render(request, 'items.html', {"items": items})
 
 def item_page(request, id):
+    try:
+        item =Item.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponse("Item not found")
 
-    for item in items:
-        if item['id'] == id:
+    context = {
+        "item": item
 
-
-            return render(request, 'item.html', item)
+    }
+    return render(request, 'item.html', context)
 
 
 
