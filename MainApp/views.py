@@ -13,36 +13,28 @@ items = [
 # Create your views here.
 
 def home(request):
-    return render(request, 'index.html')
+    context = {"name" : "Roman",
+               "surname" : "Erm"
+    }
+    return render(request, 'index.html', context)
 
-def item(request):
-    return render(request, 'item.html')
+
 def about(request):
     text = "<h1>About Page</h1>"
     return HttpResponse(text)
 
 def items_list(request):
-    html_result = """
-    Список товаров:
-    <ul>
-    """
-    for item in items:
-        html_result += f"<li><a href='/item/{item['id']}'>{item['name']}</a></li>"
 
-    html_result += "</ul>"
-
-
-    return HttpResponse(html_result)
+    context = {"items": items}
+    return render(request, 'items.html', {"items": items})
 
 def item_page(request, id):
+
     for item in items:
         if item['id'] == id:
 
-            html_result = f"""
-                <h3>{item['name']}</h3>
-                Количество : {item['quantity']}
-                """
-            return HttpResponse(html_result)
+
+            return render(request, 'item.html', item)
 
 
 
