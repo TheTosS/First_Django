@@ -27,16 +27,12 @@
 
     </nav>
 <div class="container">
-    <h1>{{item.name}}</h1>
     <p>
-        Наименование: <strong>{{item.name}}</strong>
     </p>
     <p>
         Количество:
-                {% if item.count == 0 %}
                     Товар отсутствует
                     {% else %}
-                      {{ item.count }} шт.
                 {% endif %}
 
     </p>
