@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
 from MainApp.models import Item
-from
+from django.http import HttpResponseNotFound
 items = [...]
 
 
@@ -21,11 +21,11 @@ def about(request):
     return HttpResponse(text)
 
 def items_list(request):
-
+    items = Item.objects.all()
     context = {"items": items}
-    return render(request, 'items.html', {"items": items})
+    return render(request, 'items.html',context )
 
-def item_page(request, id):
+def item_page(request , id):
     try:
         item =Item.objects.get(id=id)
     except ObjectDoesNotExist:
