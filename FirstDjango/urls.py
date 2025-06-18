@@ -20,11 +20,11 @@ from MainApp import views
 #127.0.0.1:8000/
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('', views.home),
-    path('about', views.about),
-    path('items', views.items_list),
+    path('', views.home, name="home"),
+    path('about', views.about, name='about'),
+    path('items', views.items_list, name="items"),
 
-    path('item/<int:id>', views.item_page),
+    path('item/<int:id>', views.item_page, name="item_detail"),
 
 
 

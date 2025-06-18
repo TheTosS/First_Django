@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -23,10 +25,10 @@
     </style>
 </head>
 <body>
- <nav>
-        <a href="/">Home</a>|<a href="/items">Items</a>|<a href="/about">About></a>
-
-    </nav>
+<img src="{% static 'img/unicorn.png' %}" alt="logo">
+<nav>
+    <a href="{%url 'home'  %}">Home</a>|<a href="{% url 'items' %}">Товары</a>|<a href={% url "about" %}>Об авторе</a>
+</nav>
 <div class="container">
 {# python: item['key']  #}
 {# dj_templ: item.key  #}
@@ -38,14 +40,11 @@
 {#  dj_templ: obj.attr  #}
     <ol>
         {% for item in items %}
-            <li>
+        <li>
             <a href="/item/{{ item.id }}">{{ item.name }}</a>
-            (в наличии: {{ item.count }})
-
-            </li>
-
+            (В наличии: {{ item.count }})
+        </li>
         {% endfor %}
-
     </ol>
 </div>
 </body>

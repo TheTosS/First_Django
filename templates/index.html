@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,24 +13,27 @@
             text-align: center;
             padding-top: 50px;
         }
+
         h1 {
             color: #0056b3;
         }
+
         p {
             font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>|<a href="/items">Items</a>|<a href="/about">About></a>
-
-    </nav>
-    <h1>Привет из Django!</h1>
-    <p>Вы успешно отобразили HTML-страницу.</p>
-    <p>Это ваша первая статическая страница, возвращаемая из шаблона.</p>
-    <a href="/items">Список товаров </a>
-    <p>{{ name }}</p>
-    <p>{{ surname }}</p>
+<img src="{% static 'img/unicorn.png' %}" alt="logo">
+<nav>
+    <a href="{% url 'home'  %}">Home</a>|<a href="{% url 'items' %}">Товары</a>|<a href={% url "about" %}>Об авторе</a>
+</nav>
+<h1>Привет из Django!</h1>
+<p>Вы успешно отобразили HTML-страницу.</p>
+<p>Это ваша первая статическая страница, возвращаемая из шаблона.</p>
+<a href="/items">Список товаров</a>
+<p>
+    Автор сайта: {{ name }} {{ surname }} мне: {{ age }} лет
+</p>
 </body>
 </html>
