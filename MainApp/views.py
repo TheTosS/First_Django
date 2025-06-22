@@ -37,6 +37,12 @@ def item_page(request , id):
     }
     return render(request, 'item.html', context)
 
+def item_add(request):
+    if request.method == "GET": # вернем страницу с формой
+     return render(request, 'create_item.html')
+    elif request.method == "POST": # данные от формы
+            ...
+
 
 
 

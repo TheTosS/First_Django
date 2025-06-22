@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Создать товар
+{% endblock %}
+
+{% block style %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'item-add' %}" method="post"><br>
+        <label>Название:</label><br>
+    <input type="text" name="name"><br>
+        <label>Бренд:</label><br>
+
+    <input type="text" name="brand"><br>
+      <label>Количество товара:</label><br>
+    <input type="number" name="count"><br>
+      <label>Пояснение</label><br>
+   <textarea name="description"  cols="30" rows="5">
+
+   </textarea>
+
+
+        <input type="button" value="Создать товар">
+    </form>
+{% endblock %}

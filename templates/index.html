@@ -1,33 +1,21 @@
+
+
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя первая страница Django</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
-            padding-top: 50px;
-        }
 
-        h1 {
-            color: #0056b3;
-        }
 
-        p {
-            font-size: 1.2em;
-        }
-    </style>
-</head>
-<body>
-<img src="{% static 'img/unicorn.png' %}" alt="logo">
-<nav>
-    <a href="{% url 'home'  %}">Home</a>|<a href="{% url 'items' %}">Товары</a>|<a href={% url "about" %}>Об авторе</a>
-</nav>
+{% block title %}
+
+Главная страница
+{% endblock %}
+
+
+
+
+
+{% block content %}
+    <img src="{% static 'img/unicorn.png' %}" alt="">
+
 <h1>Привет из Django!</h1>
 <p>Вы успешно отобразили HTML-страницу.</p>
 <p>Это ваша первая статическая страница, возвращаемая из шаблона.</p>
@@ -35,5 +23,4 @@
 <p>
     Автор сайта: {{ name }} {{ surname }} мне: {{ age }} лет
 </p>
-</body>
-</html>
+{% endblock %}
